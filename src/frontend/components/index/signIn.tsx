@@ -2,7 +2,7 @@ import { Box, Text, Input, Button, HStack } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import { useRouter } from 'next/router'
 
-export default function SignIn() {
+const SignIn = () => {
   const router = useRouter()
 
   const [mail, setMail] = useState('')
@@ -62,3 +62,5 @@ export default function SignIn() {
     </Box>
   )
 }
+
+export default SignIn

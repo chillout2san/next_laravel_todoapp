@@ -1,6 +1,7 @@
-import { Text, HStack } from '@chakra-ui/react'
+import { Text, HStack, Link } from '@chakra-ui/react'
+import { FaTwitter } from 'react-icons/fa'
 
-export default function Footer() {
+const Footer = () => {
   return (
     <>
       <HStack
@@ -10,8 +11,13 @@ export default function Footer() {
         borderRadius="md"
         justify="center"
       >
-        <Text>Ta-Su-Ku is run by 2san!</Text>
+        <Text fontWeight="bold">Ta-Su-Ku is run by 2san!</Text>
+        <Link href="https://twitter.com/CoO2san" isExternal>
+          <FaTwitter />
+        </Link>
       </HStack>
     </>
   )
 }
+
+export default Footer

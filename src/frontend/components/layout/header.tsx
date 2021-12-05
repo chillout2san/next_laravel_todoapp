@@ -9,11 +9,11 @@ import {
   ModalHeader,
   ModalCloseButton,
   ModalBody,
-  ModalFooter,
 } from '@chakra-ui/react'
 import { useDisclosure } from '@chakra-ui/hooks'
+import ModalBox from './header_parts/modalbox'
 
-export default function Header() {
+const Header = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()
   return (
     <>
@@ -25,12 +25,10 @@ export default function Header() {
         borderWidth="1px"
         borderRadius="md"
       >
-        <Text fontSize="4xl" fontWeight="bold">
-          <HStack spacing={0}>
-            <Text color="teal.300">T</Text>
-            <Text>a-Su-Ku</Text>
-          </HStack>
-        </Text>
+        <HStack spacing={0} fontSize="4xl" fontWeight="bold">
+          <Text color="teal.300">T</Text>
+          <Text>a-Su-Ku</Text>
+        </HStack>
         <Button onClick={onOpen} bg="teal.300" size="sm" colorScheme="white">
           <Text color="white">つかいかた</Text>
         </Button>
@@ -40,17 +38,36 @@ export default function Header() {
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay>
           <ModalContent>
-            <ModalHeader>Ta-Su-Kuのつかいかた</ModalHeader>
+            <ModalHeader bg="teal.300">
+              <Text color="white">Ta-Su-Kuのつかいかた</Text>
+            </ModalHeader>
             <ModalCloseButton />
-            <ModalBody></ModalBody>
-            <ModalFooter>
-              <Button onClick={onClose} bg="teal.50" size="sm">
-                <Text color="teal.300">閉じる</Text>
-              </Button>
-            </ModalFooter>
+
+            <ModalBody bg="teal.50">
+              <ModalBox
+                heading="Ta-Su-Kuって？"
+                firstText="直感的に操作ができるタスク管理アプリです。"
+              />
+
+              <ModalBox
+                heading="「新しいタスクを追加」ウィンドウ"
+                firstText="①タスクの名前や詳細等を入力して、登録ボタンを押せばタスクを追加できます。"
+                secondText="②アラートを有効にすると、期限切れのタスクが赤く表示されるようになります。"
+              />
+
+              <ModalBox
+                heading="「タスクリスト」ウィンドウ"
+                firstText="①各進捗状況に応じて、追加したタスクを閲覧することができます。"
+                secondText="②詳細ボタンからタスクの詳細を閲覧することができます。"
+                thirdText="③編集ボタンからタスクの内容を編集することができます。"
+                fourthText="④削除ボタンからタスクを削除することができます。元に戻せないので注意してください。"
+              />
+            </ModalBody>
           </ModalContent>
         </ModalOverlay>
       </Modal>
     </>
   )
 }
+
+export default Header

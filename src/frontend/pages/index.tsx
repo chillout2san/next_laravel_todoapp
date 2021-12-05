@@ -6,7 +6,7 @@ import { HStack, Box } from '@chakra-ui/react'
 const Home: NextPage = () => {
   return (
     <>
-      <HStack m={2} spacing={2} align='start'>
+      <HStack m={2} spacing={2} align="start">
         <Box borderWidth="1px" width="50%">
           <SignUp />
         </Box>

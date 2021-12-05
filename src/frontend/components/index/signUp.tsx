@@ -2,7 +2,7 @@ import { Box, Text, Input, Button, HStack } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import { useRouter } from 'next/router'
 
-export default function SignUp() {
+const SignUp = () => {
   const router = useRouter()
 
   const [name, setName] = useState('')
@@ -76,3 +76,5 @@ export default function SignUp() {
     </Box>
   )
 }
+
+export default SignUp
