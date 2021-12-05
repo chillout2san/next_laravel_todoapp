@@ -11,7 +11,7 @@ const Footer = () => {
         borderRadius="md"
         justify="center"
       >
-        <Text fontWeight="bold">Ta-Su-Ku is run by 2san!</Text>
+        <Text fontSize="xl" fontWeight="bold">Ta-Su-Ku is run by 2san!</Text>
         <Link href="https://twitter.com/CoO2san" isExternal>
           <FaTwitter />
         </Link>
