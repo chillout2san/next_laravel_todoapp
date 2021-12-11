@@ -1,9 +1,8 @@
 import axios from 'axios'
-
-const url = 'http://localhost:80'
+import { URL } from '../../constants'
 
 const client = axios.create({
-  baseURL: url,
+  baseURL: URL,
 })
 
 // MARKING: エラーハンドリングを検討すること

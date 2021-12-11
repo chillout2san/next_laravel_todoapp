@@ -11,7 +11,7 @@ import {
   ModalBody,
 } from '@chakra-ui/react'
 import { useDisclosure } from '@chakra-ui/hooks'
-import ModalBox from './header_parts/modalbox'
+import ModalBox from './header_parts/ModalBox'
 
 const Header = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()

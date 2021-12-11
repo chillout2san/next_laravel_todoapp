@@ -1,4 +1,4 @@
-import { Box, Text, Input, Button, HStack } from '@chakra-ui/react'
+import { Box, Text, Input, Button, HStack, Divider } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import { useRouter } from 'next/router'
 
@@ -30,6 +30,8 @@ const SignIn = () => {
         メールアドレスとパスワードでログイン
       </Text>
 
+      <Divider mb={1} />
+
       <Box pb={2}>
         <Text pb={1}>メールアドレス</Text>
         <Input
@@ -50,6 +52,9 @@ const SignIn = () => {
         />
       </Box>
 
+      <Divider mb={1} />
+
+      {/* MARKING: 締め切り日のフォームを実装すること */}
       <HStack>
         <Button onClick={signIn} bg="teal.300" size="sm">
           <Text color="white">ログインする</Text>

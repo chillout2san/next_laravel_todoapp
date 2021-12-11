@@ -1,4 +1,4 @@
-import { Box, Text, Input, Button, HStack } from '@chakra-ui/react'
+import { Box, Text, Input, Button, HStack, Divider } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import { useRouter } from 'next/router'
 
@@ -34,6 +34,8 @@ const SignUp = () => {
         メールアドレスとパスワードで会員登録
       </Text>
 
+      <Divider mb={1} />
+
       <Box pb={2}>
         <Text pb={1}>名前</Text>
         <Input
@@ -63,6 +65,8 @@ const SignUp = () => {
           borderColor="teal.400"
         />
       </Box>
+
+      <Divider mb={1} />
 
       <HStack>
         <Button onClick={signUp} bg="teal.300" size="sm">
