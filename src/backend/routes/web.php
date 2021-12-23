@@ -11,6 +11,4 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::post('fetch_todos', 'TodoController@fetchTodos');

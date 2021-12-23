@@ -16,14 +16,15 @@ const AddForm = () => {
     setTitle(event.target.value)
 
   const [content, setContent] = useState('')
-  const handleContent: React.ChangeEventHandler<HTMLTextAreaElement> = (event) =>
-    setContent(event.target.value)
+  const handleContent: React.ChangeEventHandler<HTMLTextAreaElement> = (
+    event
+  ) => setContent(event.target.value)
 
   const pushTask = () => {
     const task = {
       title: title,
       content: content,
-      status: WORK_ON_PROGRESS
+      status: WORK_ON_PROGRESS,
     }
     // MARKING: axiosへ登録処理を行う。成功したらclearFormを行う。
     clearForm()

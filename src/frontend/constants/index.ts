@@ -5,4 +5,4 @@ export const WORK_ON_PROGRESS = '作業中'
 export const REQUESTED = '依頼中'
 
 // axiosからrequestを投げるバックエンドのURL
-export const URL = 'http://localhost:80'
+export const URL = 'http://localhost/public/'

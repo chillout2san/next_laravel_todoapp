@@ -15,8 +15,13 @@ import {
   Td,
 } from '@chakra-ui/react'
 import { ALL, DONE, REQUESTED, WORK_ON_PROGRESS } from '../../constants'
+import { TodoType } from '../../types'
 
-const TaskList = () => {
+interface PropType {
+  todos: TodoType[]
+}
+
+const TaskList = (props: Partial<PropType>) => {
   return (
     <Box p={2} borderRadius="md" borderWidth="1px" shadow="lg">
       <Text pb={2} fontWeight="bold">
