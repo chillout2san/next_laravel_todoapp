@@ -11,7 +11,7 @@ import {
   ModalBody,
 } from '@chakra-ui/react'
 import { useDisclosure } from '@chakra-ui/hooks'
-import ModalBox from './header_parts/ModalBox'
+import HeaderModalBox from './header_parts/ModalBox'
 
 const Header = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -44,18 +44,18 @@ const Header = () => {
             <ModalCloseButton />
 
             <ModalBody bg="teal.50">
-              <ModalBox
+              <HeaderModalBox
                 heading="Ta-Su-Kuって？"
                 firstText="直感的に操作ができるタスク管理アプリです。"
               />
 
-              <ModalBox
+              <HeaderModalBox
                 heading="「新しいタスクを追加」ウィンドウ"
                 firstText="①タスクの名前や詳細等を入力して、登録ボタンを押せばタスクを追加できます。"
                 secondText="②アラートを有効にすると、期限切れのタスクが赤く表示されるようになります。"
               />
 
-              <ModalBox
+              <HeaderModalBox
                 heading="「タスクリスト」ウィンドウ"
                 firstText="①各進捗状況に応じて、追加したタスクを閲覧することができます。"
                 secondText="②詳細ボタンからタスクの詳細を閲覧することができます。"

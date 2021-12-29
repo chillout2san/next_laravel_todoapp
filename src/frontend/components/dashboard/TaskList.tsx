@@ -21,7 +21,8 @@ interface PropType {
   todos: TodoType[]
 }
 
-const TaskList = (props: Partial<PropType>) => {
+const TaskList = (props: PropType) => {
+  const { todos } = props
   return (
     <Box p={2} borderRadius="md" borderWidth="1px" shadow="lg">
       <Text pb={2} fontWeight="bold">
@@ -52,31 +53,26 @@ const TaskList = (props: Partial<PropType>) => {
           </Tr>
         </Thead>
         <Tbody>
-          <Tr>
-            <Td>1</Td>
-            <Td>買い物</Td>
-            <Td>作業中</Td>
-            <Td>
-              <Button bg="teal.300" size="xs">
-                <Text color="white">詳細</Text>
-              </Button>
-            </Td>
-            <Td>
-              <Button bg="teal.50" size="xs">
-                <Text color="teal.400">削除</Text>
-              </Button>
-            </Td>
-          </Tr>
-          <Tr>
-            <Td>2</Td>
-            <Td>洗い物</Td>
-            <Td>作業中</Td>
-          </Tr>
-          <Tr>
-            <Td>3</Td>
-            <Td>料理</Td>
-            <Td>作業中</Td>
-          </Tr>
+          {todos &&
+            todos.map(({ title, content, status, deadline }, index) => {
+              return (
+                <Tr key={index}>
+                  <Td>{index}</Td>
+                  <Td>{title}</Td>
+                  <Td>{status}</Td>
+                  <Td>
+                    <Button bg="teal.300" size="xs">
+                      <Text color="white">詳細</Text>
+                    </Button>
+                  </Td>
+                  <Td>
+                    <Button bg="teal.50" size="xs">
+                      <Text color="teal.400">削除</Text>
+                    </Button>
+                  </Td>
+                </Tr>
+              )
+            })}
         </Tbody>
       </Table>
     </Box>

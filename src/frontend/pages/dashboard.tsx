@@ -7,7 +7,7 @@ import { postMethod } from '../libs/axios/axios'
 import { TodoType } from '../types'
 
 const Home: NextPage = () => {
-  const [todos, setTodos] = useState<Partial<TodoType[]>>([])
+  const [todos, setTodos] = useState<TodoType[]>([])
 
   const fetchTodos = () => {
     // MARKING: ログイン時にuser_idを取得すること
@@ -28,7 +28,7 @@ const Home: NextPage = () => {
           <AddForm />
         </Box>
         <Box width="65%">
-          <TaskList/>
+          <TaskList todos={todos} />
         </Box>
       </HStack>
     </>

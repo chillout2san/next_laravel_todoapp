@@ -8,7 +8,7 @@ interface Props {
   fourthText?: string
 }
 
-const ModalBox = (props: Props) => {
+const HeaderModalBox = (props: Props) => {
   const { heading, firstText, secondText, thirdText, fourthText } = props
   return (
     <Box
@@ -50,4 +50,4 @@ const ModalBox = (props: Props) => {
   )
 }
 
-export default ModalBox
+export default HeaderModalBox
