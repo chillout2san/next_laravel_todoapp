@@ -73,7 +73,7 @@ const TaskList = (props: PropType) => {
             todos.map(({ title, status, deadline }, index) => {
               return (
                 <Tr key={index}>
-                  <Td>{index}</Td>
+                  <Td>{index + 1}</Td>
                   <Td>{title}</Td>
                   <Td>{status}</Td>
                   <Td>{deadline}</Td>

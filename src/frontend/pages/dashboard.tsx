@@ -4,10 +4,11 @@ import { HStack, Box } from '@chakra-ui/react'
 import AddForm from '../components/dashboard/AddForm'
 import TaskList from '../components/dashboard/TaskList'
 import { postMethod } from '../libs/axios/axios'
-import { TodoType } from '../types'
+import { useContext } from 'react'
+import { TodoContext } from '../providers/TodoProvider'
 
 const Home: NextPage = () => {
-  const [todos, setTodos] = useState<TodoType[]>([])
+  const { todos, setTodos } = useContext(TodoContext)
 
   const fetchTodos = () => {
     // MARKING: ログイン時にuser_idを取得すること
