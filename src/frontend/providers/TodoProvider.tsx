@@ -16,7 +16,7 @@ interface ProviderType {
   setTodos: Dispatch<SetStateAction<TodoType[]>>
 }
 
-export const TodoContext = createContext<ProviderType>({})
+export const TodoContext = createContext<ProviderType>({} as ProviderType)
 
 export const TodoProvider = (props: PropType) => {
   const { children } = props
