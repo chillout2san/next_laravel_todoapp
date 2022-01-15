@@ -22,6 +22,7 @@ const Home: NextPage = () => {
   useEffect(() => {
     fetchTodos()
   }, [])
+
   return (
     <>
       <HStack m={2} spacing={2} align="start">
@@ -29,7 +30,7 @@ const Home: NextPage = () => {
           <AddForm />
         </Box>
         <Box width="65%">
-          <TaskList todos={todos} />
+          <TaskList />
         </Box>
       </HStack>
     </>

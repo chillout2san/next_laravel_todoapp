@@ -24,13 +24,11 @@ import { useDisclosure } from '@chakra-ui/hooks'
 import { ALL, DONE, REQUESTED, WORK_ON_PROGRESS } from '../../constants'
 import { TodoType } from '../../types'
 import { useState } from 'react'
+import { useContext } from 'react'
+import { TodoContext } from '../../providers/TodoProvider'
 
-interface PropType {
-  todos: TodoType[]
-}
-
-const TaskList = (props: PropType) => {
-  const { todos } = props
+const TaskList = () => {
+  const { todos } = useContext(TodoContext)
   const [todo, setTodo] = useState<TodoType>()
   const { isOpen, onOpen, onClose } = useDisclosure()
   const openModal = (index: number) => {
