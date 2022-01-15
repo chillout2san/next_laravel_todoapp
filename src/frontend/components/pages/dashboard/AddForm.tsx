@@ -9,16 +9,14 @@ import {
   Divider,
   Select,
 } from '@chakra-ui/react'
-import { WORK_ON_PROGRESS } from '../../constants'
+import { WORK_ON_PROGRESS } from '../../../constants'
 import { useContext } from 'react'
-import { TodoContext } from '../../providers/TodoProvider'
-import { yearList } from '../../services/components/dashboard/AddForm'
-import { monthList } from '../../services/components/dashboard/AddForm'
-import { dateList } from '../../services/components/dashboard/AddForm'
-import { presentYear } from '../../services/components/dashboard/AddForm'
-import { presentMonth } from '../../services/components/dashboard/AddForm'
-import { presentDate } from '../../services/components/dashboard/AddForm'
-import { TodoType } from '../../types'
+import { TodoContext } from '../../../providers/TodoProvider'
+import { yearList } from '../../../services/components/pages/dashboard/AddForm'
+import { monthList } from '../../../services/components/pages/dashboard/AddForm'
+import { dateList } from '../../../services/components/pages/dashboard/AddForm'
+import { TodoType } from '../../../types'
+import { useAddFormState } from '../../../hooks/components/pages/dashboard/AddFrom'
 
 interface PropType {
   fetchTodos: () => void
@@ -29,29 +27,19 @@ const AddForm = (props: PropType) => {
 
   const { todos, setTodos } = useContext(TodoContext)
 
-  const [title, setTitle] = useState('')
-  const handleTitle: React.ChangeEventHandler<HTMLInputElement> = (event) =>
-    setTitle(event.target.value)
-
-  const [content, setContent] = useState('')
-  const handleContent: React.ChangeEventHandler<HTMLTextAreaElement> = (
-    event
-  ) => setContent(event.target.value)
-
-  const [year, setYear] = useState(presentYear.toString())
-  const handleYear: React.ChangeEventHandler<HTMLSelectElement> = (event) => {
-    setYear(event.target.value)
-  }
-
-  const [month, setMonth] = useState(presentMonth.toString())
-  const handleMonth: React.ChangeEventHandler<HTMLSelectElement> = (event) => {
-    setMonth(event.target.value)
-  }
-
-  const [date, setDate] = useState(presentDate.toString())
-  const handleDate: React.ChangeEventHandler<HTMLSelectElement> = (event) => {
-    setDate(event.target.value)
-  }
+  const {
+    title,
+    handleTitle,
+    content,
+    handleContent,
+    year,
+    handleYear,
+    month,
+    handleMonth,
+    date,
+    handleDate,
+    clearForm,
+  } = useAddFormState()
 
   const pushTodo = () => {
     const todo = {
@@ -66,14 +54,6 @@ const AddForm = (props: PropType) => {
     // MARKING: axiosへ登録処理を行う。成功したらclearFormを行う。
     clearForm()
     fetchTodos()
-  }
-
-  const clearForm = () => {
-    setTitle('')
-    setContent('')
-    setYear(presentYear.toString())
-    setMonth(presentMonth.toString())
-    setDate(presentDate.toString())
   }
 
   return (

@@ -21,11 +21,11 @@ import {
   ModalBody,
 } from '@chakra-ui/react'
 import { useDisclosure } from '@chakra-ui/hooks'
-import { ALL, DONE, REQUESTED, WORK_ON_PROGRESS } from '../../constants'
-import { TodoType } from '../../types'
+import { ALL, DONE, REQUESTED, WORK_ON_PROGRESS } from '../../../constants'
+import { TodoType } from '../../../types'
 import { useState } from 'react'
 import { useContext } from 'react'
-import { TodoContext } from '../../providers/TodoProvider'
+import { TodoContext } from '../../../providers/TodoProvider'
 
 const TaskList = () => {
   const { todos } = useContext(TodoContext)
