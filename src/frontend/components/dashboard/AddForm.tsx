@@ -20,7 +20,13 @@ import { presentMonth } from '../../services/components/dashboard/AddForm'
 import { presentDate } from '../../services/components/dashboard/AddForm'
 import { TodoType } from '../../types'
 
-const AddForm = () => {
+interface PropType {
+  fetchTodos: () => void
+}
+
+const AddForm = (props: PropType) => {
+  const { fetchTodos } = props
+
   const { todos, setTodos } = useContext(TodoContext)
 
   const [title, setTitle] = useState('')
@@ -52,13 +58,14 @@ const AddForm = () => {
       title: title,
       content: content,
       status: WORK_ON_PROGRESS,
-      deadline: `${year}-${month}-${date}`
+      deadline: `${year}-${month}-${date}`,
     }
 
     const newTodos = [...todos, todo] as TodoType[]
     setTodos(newTodos)
     // MARKING: axiosへ登録処理を行う。成功したらclearFormを行う。
     clearForm()
+    fetchTodos()
   }
 
   const clearForm = () => {

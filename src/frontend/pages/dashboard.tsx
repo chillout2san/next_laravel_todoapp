@@ -27,7 +27,7 @@ const Home: NextPage = () => {
     <>
       <HStack m={2} spacing={2} align="start">
         <Box width="35%">
-          <AddForm />
+          <AddForm fetchTodos={fetchTodos} />
         </Box>
         <Box width="65%">
           <TaskList />
