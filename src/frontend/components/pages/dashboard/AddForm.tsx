@@ -17,6 +17,7 @@ import { monthList } from '../../../services/components/pages/dashboard/AddForm'
 import { dateList } from '../../../services/components/pages/dashboard/AddForm'
 import { TodoType } from '../../../types'
 import { useAddFormState } from '../../../hooks/components/pages/dashboard/AddFrom'
+import { postMethod } from '../../../libs/axios/axios'
 
 interface PropType {
   fetchTodos: () => void
@@ -52,8 +53,15 @@ const AddForm = (props: PropType) => {
     const newTodos = [...todos, todo] as TodoType[]
     setTodos(newTodos)
     // MARKING: axiosへ登録処理を行う。成功したらclearFormを行う。
-    clearForm()
-    fetchTodos()
+    const param = new URLSearchParams()
+    param.append('user_id', '0')
+    param.append('title', title)
+    param.append('content', content)
+    param.append('deadline', todo.deadline)
+    postMethod('push_todo', param).then((_response) => {
+      clearForm()
+      fetchTodos()
+    })
   }
 
   return (
