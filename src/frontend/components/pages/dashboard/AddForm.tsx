@@ -12,15 +12,17 @@ import {
 import { WORK_ON_PROGRESS } from '../../../constants'
 import { useContext } from 'react'
 import { TodoContext } from '../../../providers/TodoProvider'
-import { yearList } from '../../../services/components/pages/dashboard/AddForm'
-import { monthList } from '../../../services/components/pages/dashboard/AddForm'
-import { dateList } from '../../../services/components/pages/dashboard/AddForm'
+import {
+  yearList,
+  monthList,
+  dateList,
+} from '../../../services/components/pages/dashboard/AddForm'
 import { TodoType } from '../../../types'
 import { useAddFormState } from '../../../hooks/components/pages/dashboard/AddFrom'
 import { postMethod } from '../../../libs/axios/axios'
 
 interface PropType {
-  fetchTodos: () => void
+  fetchTodos: (user_id: string) => void
 }
 
 const AddForm = (props: PropType) => {
@@ -52,7 +54,6 @@ const AddForm = (props: PropType) => {
 
     const newTodos = [...todos, todo] as TodoType[]
     setTodos(newTodos)
-    // MARKING: axiosへ登録処理を行う。成功したらclearFormを行う。
     const param = new URLSearchParams()
     param.append('user_id', '0')
     param.append('title', title)
@@ -60,7 +61,8 @@ const AddForm = (props: PropType) => {
     param.append('deadline', todo.deadline)
     postMethod('push_todo', param).then((_response) => {
       clearForm()
-      fetchTodos()
+      // MARKING: fetchTodosにuser_idを渡すようにする
+      fetchTodos('0')
     })
   }
 

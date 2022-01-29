@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Todo;
 use Illuminate\Http\Request;
 
-// cross-originの処理を実装する
+// MARKING: cross-originの処理を実装する
 class TodoController extends Controller
 {
     public function fetchTodos(Request $request) {
