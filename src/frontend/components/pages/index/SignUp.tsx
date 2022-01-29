@@ -1,31 +1,52 @@
 import { Box, Text, Input, Button, HStack, Divider } from '@chakra-ui/react'
-import React, { useState } from 'react'
 import { useRouter } from 'next/router'
+import { useSignUp } from '../../../hooks/components/pages/index/SignUp'
+import { createURLSearchParams, postMethod } from '../../../libs/axios/axios'
+import { signUpRequest, signUpResponse } from '../../../types/api/signUp'
+import { AxiosResponse } from 'axios'
+import { UserContext } from '../../../providers/UserProvider'
+import { useContext } from 'react'
 
 const SignUp = () => {
   const router = useRouter()
 
-  const [name, setName] = useState('')
-  const handleName: React.ChangeEventHandler<HTMLInputElement> = (event) =>
-    setName(event.target.value)
+  const { setUserId, setUserName } = useContext(UserContext)
 
-  const [mail, setMail] = useState('')
-  const handleMail: React.ChangeEventHandler<HTMLInputElement> = (event) =>
-    setMail(event.target.value)
-
-  const [pass, setPass] = useState('')
-  const handlePass: React.ChangeEventHandler<HTMLInputElement> = (event) =>
-    setPass(event.target.value)
+  const {
+    name,
+    handleName,
+    mail,
+    handleMail,
+    pass,
+    handlePass,
+    errorMessage,
+    setErrorMessage,
+    clearForm,
+  } = useSignUp()
 
   const signUp = () => {
-    clearForm()
+    if (name === '' || mail === '' || pass === '') {
+      setErrorMessage('全ての項目を記入してください。')
+      return
+    }
+    const params = createURLSearchParams<signUpRequest>([
+      ['name', name],
+      ['mail', mail],
+      ['pass', pass],
+    ])
     // MARKING:ログイン時のナビゲーションガードを実装
-    router.push('/dashboard')
-  }
-
-  const clearForm = () => {
-    setMail('')
-    setPass('')
+    postMethod('sign_up', params).then(
+      ({ data }: AxiosResponse<signUpResponse>) => {
+        if (data.user_id == null) {
+          setErrorMessage('会員登録に失敗しました。')
+          return
+        }
+        clearForm()
+        setUserId(data.user_id)
+        setUserName(name)
+        router.push('/dashboard')
+      }
+    )
   }
 
   return (
@@ -36,6 +57,9 @@ const SignUp = () => {
 
       <Divider mb={1} />
 
+      <Text pb={2} textColor="red" fontWeight="bold">
+        {errorMessage}
+      </Text>
       <Box pb={2}>
         <Text pb={1}>名前</Text>
         <Input

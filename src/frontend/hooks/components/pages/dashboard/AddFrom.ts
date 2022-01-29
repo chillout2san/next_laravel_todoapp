@@ -5,7 +5,7 @@ import {
   presentDate,
 } from '../../../../services/components/pages/dashboard/AddForm'
 
-export const useAddFormState = () => {
+export const useAddForm = () => {
   const [title, setTitle] = useState('')
   const handleTitle: React.ChangeEventHandler<HTMLInputElement> = (event) =>
     setTitle(event.target.value)

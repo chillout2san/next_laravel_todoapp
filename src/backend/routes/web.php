@@ -13,3 +13,4 @@
 
 Route::post('fetch_todos', 'TodoController@fetchTodos');
 Route::post('push_todo', 'TodoController@pushTodo');
+Route::post('sign_up', 'UserController@signUp');

@@ -4,16 +4,16 @@ import { HStack, Box } from '@chakra-ui/react'
 import AddForm from '../components/pages/dashboard/AddForm'
 import TaskList from '../components/pages/dashboard/TaskList'
 import { useContext } from 'react'
-import { TodoContext } from '../providers/TodoProvider'
-import { useDashBoard } from '../hooks/components/pages/dashboard/pages/dashboard'
+import { useDashBoard } from '../hooks/pages/dashboard'
+import { UserContext } from '../providers/UserProvider'
 
 const Home: NextPage = () => {
-  const { todos, setTodos } = useContext(TodoContext)
+  const { userId } = useContext(UserContext)
 
   const { fetchTodos } = useDashBoard()
 
   useEffect(() => {
-    fetchTodos('0')
+    fetchTodos(userId)
   }, [])
 
   return (

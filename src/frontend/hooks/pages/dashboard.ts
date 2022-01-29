@@ -1,6 +1,6 @@
-import { postMethod } from '../../../../../libs/axios/axios'
+import { postMethod } from '../../libs/axios/axios'
 import { useContext } from 'react'
-import { TodoContext } from '../../../../../providers/TodoProvider'
+import { TodoContext } from '../../providers/TodoProvider'
 
 export const useDashBoard = () => {
   const { todos, setTodos } = useContext(TodoContext)

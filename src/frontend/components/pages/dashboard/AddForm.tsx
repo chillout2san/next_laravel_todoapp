@@ -18,7 +18,7 @@ import {
   dateList,
 } from '../../../services/components/pages/dashboard/AddForm'
 import { TodoType } from '../../../types'
-import { useAddFormState } from '../../../hooks/components/pages/dashboard/AddFrom'
+import { useAddForm } from '../../../hooks/components/pages/dashboard/AddFrom'
 import { postMethod } from '../../../libs/axios/axios'
 
 interface PropType {
@@ -42,7 +42,7 @@ const AddForm = (props: PropType) => {
     date,
     handleDate,
     clearForm,
-  } = useAddFormState()
+  } = useAddForm()
 
   const pushTodo = () => {
     const todo = {
@@ -52,6 +52,7 @@ const AddForm = (props: PropType) => {
       deadline: `${year}-${month}-${date}`,
     }
 
+    // MARKING: pushTodos失敗した時のエラーハンドリングを行う
     const newTodos = [...todos, todo] as TodoType[]
     setTodos(newTodos)
     const param = new URLSearchParams()
