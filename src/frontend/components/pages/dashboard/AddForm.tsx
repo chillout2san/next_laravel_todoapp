@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import {
   Box,
   Text,
@@ -12,6 +11,7 @@ import {
 import { WORK_ON_PROGRESS } from '../../../constants'
 import { useContext } from 'react'
 import { TodoContext } from '../../../providers/TodoProvider'
+import { UserContext } from '../../../providers/UserProvider'
 import {
   yearList,
   monthList,
@@ -29,6 +29,8 @@ const AddForm = (props: PropType) => {
   const { fetchTodos } = props
 
   const { todos, setTodos } = useContext(TodoContext)
+
+  const { userId, userName } = useContext(UserContext)
 
   const {
     title,

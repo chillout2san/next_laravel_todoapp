@@ -87,6 +87,7 @@ const SignUp = () => {
           onChange={handlePass}
           placeholder="testpass"
           borderColor="teal.400"
+          type="password"
         />
       </Box>
 
