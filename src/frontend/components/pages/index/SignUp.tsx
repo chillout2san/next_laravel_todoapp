@@ -1,6 +1,6 @@
 import { Box, Text, Input, Button, HStack, Divider } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
-import { useSignUp } from '../../../hooks/components/pages/index/SignUp'
+import { useSignUp } from '../../../hooks/components/pages/index/signUp'
 import { createURLSearchParams, postMethod } from '../../../libs/axios/axios'
 import { signUpRequest, signUpResponse } from '../../../types/api/signUp'
 import { AxiosResponse } from 'axios'
@@ -34,10 +34,9 @@ const SignUp = () => {
       ['mail', mail],
       ['pass', pass],
     ])
-    // MARKING:ログイン時のナビゲーションガードを実装
     postMethod('sign_up', params).then(
       ({ data }: AxiosResponse<signUpResponse>) => {
-        if (data.user_id == null) {
+        if (data.user_id === null) {
           setErrorMessage('会員登録に失敗しました。')
           return
         }

@@ -1,10 +1,6 @@
 import { useState } from 'react'
 
-export const useSignUp = () => {
-  const [name, setName] = useState('')
-  const handleName: React.ChangeEventHandler<HTMLInputElement> = (event) =>
-    setName(event.target.value)
-
+export const useSignIn = () => {
   const [mail, setMail] = useState('')
   const handleMail: React.ChangeEventHandler<HTMLInputElement> = (event) =>
     setMail(event.target.value)
@@ -22,14 +18,12 @@ export const useSignUp = () => {
   }
 
   return {
-    name,
-    handleName,
     mail,
-    handleMail,
     pass,
+    handleMail,
     handlePass,
+    clearForm,
     errorMessage,
     setErrorMessage,
-    clearForm,
   }
 }

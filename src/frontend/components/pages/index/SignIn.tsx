@@ -1,27 +1,48 @@
 import { Box, Text, Input, Button, HStack, Divider } from '@chakra-ui/react'
-import React, { useState } from 'react'
+import { AxiosResponse } from 'axios'
 import { useRouter } from 'next/router'
+import { useSignIn } from '../../../hooks/components/pages/index/signIn'
+import { createURLSearchParams, postMethod } from '../../../libs/axios/axios'
+import { UserContext } from '../../../providers/UserProvider'
+import { signInRequest, singInResponse } from '../../../types/api/signIn'
+import { useContext } from 'react'
 
 const SignIn = () => {
   const router = useRouter()
 
-  const [mail, setMail] = useState('')
-  const handleMail: React.ChangeEventHandler<HTMLInputElement> = (event) =>
-    setMail(event.target.value)
+  const { setUserId, setUserName } = useContext(UserContext)
 
-  const [pass, setPass] = useState('')
-  const handlePass: React.ChangeEventHandler<HTMLInputElement> = (event) =>
-    setPass(event.target.value)
+  const {
+    mail,
+    handleMail,
+    pass,
+    handlePass,
+    clearForm,
+    errorMessage,
+    setErrorMessage,
+  } = useSignIn()
 
   const signIn = () => {
-    clearForm()
-    // MARKING:ログイン時のナビゲーションガードを実装
-    router.push('/dashboard')
-  }
-
-  const clearForm = () => {
-    setMail('')
-    setPass('')
+    if (mail === '' || pass === '') {
+      setErrorMessage('全ての項目を記入してください')
+      return
+    }
+    const params = createURLSearchParams<signInRequest>([
+      ['mail', mail],
+      ['pass', pass],
+    ])
+    postMethod('sign_in', params).then(
+      ({ data }: AxiosResponse<singInResponse>) => {
+        if (data.user_id === null) {
+          setErrorMessage('ログインに失敗しました')
+          return
+        }
+        clearForm()
+        setUserId(data.user_id)
+        setUserName(data.name)
+        router.push('/dashboard')
+      }
+    )
   }
 
   return (
@@ -31,6 +52,10 @@ const SignIn = () => {
       </Text>
 
       <Divider mb={1} />
+
+      <Text pb={2} textColor="red" fontWeight="bold">
+        {errorMessage}
+      </Text>
 
       <Box pb={2}>
         <Text pb={1}>メールアドレス</Text>
@@ -49,6 +74,7 @@ const SignIn = () => {
           onChange={handlePass}
           placeholder="testpass"
           borderColor="teal.400"
+          type="password"
         />
       </Box>
 

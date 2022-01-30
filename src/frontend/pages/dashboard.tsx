@@ -13,6 +13,7 @@ const Home: NextPage = () => {
   const { fetchTodos } = useDashBoard()
 
   useEffect(() => {
+    // MARKING: ナビゲーションガードを実装すること
     fetchTodos(userId)
   }, [])
 
