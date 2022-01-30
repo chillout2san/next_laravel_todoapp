@@ -80,7 +80,6 @@ const SignIn = () => {
 
       <Divider mb={1} />
 
-      {/* MARKING: 締め切り日のフォームを実装すること */}
       <HStack>
         <Button onClick={signIn} bg="teal.300" size="sm">
           <Text color="white">ログインする</Text>

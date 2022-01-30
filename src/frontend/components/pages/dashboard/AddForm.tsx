@@ -17,7 +17,6 @@ import {
   monthList,
   dateList,
 } from '../../../services/components/pages/dashboard/AddForm'
-import { TodoType } from '../../../types'
 import { useAddForm } from '../../../hooks/components/pages/dashboard/AddFrom'
 import { postMethod } from '../../../libs/axios/axios'
 
@@ -28,9 +27,7 @@ interface PropType {
 const AddForm = (props: PropType) => {
   const { fetchTodos } = props
 
-  const { todos, setTodos } = useContext(TodoContext)
-
-  const { userId, userName } = useContext(UserContext)
+  const { userId } = useContext(UserContext)
 
   const {
     title,
@@ -55,17 +52,14 @@ const AddForm = (props: PropType) => {
     }
 
     // MARKING: pushTodos失敗した時のエラーハンドリングを行う
-    const newTodos = [...todos, todo] as TodoType[]
-    setTodos(newTodos)
     const param = new URLSearchParams()
-    param.append('user_id', '0')
+    param.append('user_id', userId)
     param.append('title', title)
     param.append('content', content)
     param.append('deadline', todo.deadline)
     postMethod('push_todo', param).then((_response) => {
       clearForm()
-      // MARKING: fetchTodosにuser_idを渡すようにする
-      fetchTodos('0')
+      fetchTodos(userId)
     })
   }
 

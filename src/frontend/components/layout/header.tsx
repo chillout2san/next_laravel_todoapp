@@ -34,7 +34,6 @@ const Header = () => {
         </Button>
       </VStack>
 
-      {/* MARKING:Modalの中身を実装 */}
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay>
           <ModalContent>
