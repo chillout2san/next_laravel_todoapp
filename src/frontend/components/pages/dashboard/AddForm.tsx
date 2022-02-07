@@ -64,7 +64,7 @@ const AddForm = (props: PropType) => {
   }
 
   return (
-    <Box p={2} borderRadius="md" borderWidth="1px" shadow="lg">
+    <Box p={2} borderRadius="md" borderWidth="1px" shadow="lg" height="350px">
       <Text pb={2} fontWeight="bold">
         新しいタスクを追加
       </Text>

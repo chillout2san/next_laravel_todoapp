@@ -26,8 +26,10 @@ import { TodoType } from '../../../types'
 import { useState } from 'react'
 import { useContext } from 'react'
 import { TodoContext } from '../../../providers/TodoProvider'
+import { UserContext } from '../../../providers/UserProvider'
 
 const TaskList = () => {
+  const { userName } = useContext(UserContext)
   const { todos } = useContext(TodoContext)
   const [todo, setTodo] = useState<TodoType>()
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -39,7 +41,7 @@ const TaskList = () => {
   return (
     <Box p={2} borderRadius="md" borderWidth="1px" shadow="lg">
       <Text pb={2} fontWeight="bold">
-        タスクリスト
+        { userName }のタスクリスト
       </Text>
 
       <Divider mb={1} />
