@@ -22,16 +22,15 @@ import {
 } from '@chakra-ui/react'
 import { useDisclosure } from '@chakra-ui/hooks'
 import { ALL, DONE, REQUESTED, WORK_ON_PROGRESS } from '../../../constants'
-import { TodoType } from '../../../types'
-import { useState } from 'react'
 import { useContext } from 'react'
 import { TodoContext } from '../../../providers/TodoProvider'
 import { UserContext } from '../../../providers/UserProvider'
+import { useTaskList } from '../../../hooks/components/pages/dashboard/TaskList'
 
 const TaskList = () => {
-  const { userName } = useContext(UserContext)
+  const { userId, userName } = useContext(UserContext)
   const { todos } = useContext(TodoContext)
-  const [todo, setTodo] = useState<TodoType>()
+  const { todo, setTodo, deleteTodo } = useTaskList()
   const { isOpen, onOpen, onClose } = useDisclosure()
   const openModal = (index: number) => {
     const selectedTodo = todos[index]
@@ -41,7 +40,7 @@ const TaskList = () => {
   return (
     <Box p={2} borderRadius="md" borderWidth="1px" shadow="lg">
       <Text pb={2} fontWeight="bold">
-        { userName }のタスクリスト
+        {userName}のタスクリスト
       </Text>
 
       <Divider mb={1} />
@@ -70,7 +69,7 @@ const TaskList = () => {
         </Thead>
         <Tbody>
           {todos &&
-            todos.map(({ title, status, deadline }, index) => {
+            todos.map(({ id, title, status, deadline }, index) => {
               return (
                 <Tr key={index}>
                   <Td>{index + 1}</Td>
@@ -86,7 +85,12 @@ const TaskList = () => {
                   </Td>
                   <Td>
                     <Button bg="teal.50" size="xs">
-                      <Text color="teal.400">削除</Text>
+                      <Text
+                        color="teal.400"
+                        onClick={() => deleteTodo(userId, id)}
+                      >
+                        削除
+                      </Text>
                     </Button>
                   </Td>
                 </Tr>

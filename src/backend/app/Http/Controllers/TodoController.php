@@ -10,7 +10,7 @@ class TodoController extends Controller
     public function fetchTodos(Request $request) {
       header('Access-Control-Allow-Origin: *');
       $id = (int) $request->input('user_id');
-      $todos = Todo::where('user_id', $id)->select('title', 'content', 'status', 'deadline')->get();
+      $todos = Todo::where('user_id', $id)->select('id', 'title', 'content', 'status', 'deadline')->get();
       return json_decode($todos);
     }
 
@@ -23,5 +23,12 @@ class TodoController extends Controller
       $todo->status = '作業中';
       $todo->deadline = $request->input('deadline');
       $todo->save();
+    }
+
+    public function deleteTodo(Request $request) {
+      header('Access-Control-Allow-Origin: *');
+      $id = (int) $request->input('id');
+      $todo = Todo::find($id);
+      $todo->delete();
     }
 }
