@@ -30,7 +30,8 @@ import { useTaskList } from '../../../hooks/components/pages/dashboard/TaskList'
 const TaskList = () => {
   const { userId, userName } = useContext(UserContext)
   const { todos } = useContext(TodoContext)
-  const { todo, setTodo, selectTodos, deleteTodo, isAfterDeadline } = useTaskList()
+  const { todo, setTodo, selectTodos, deleteTodo, isAfterDeadline } =
+    useTaskList()
   const { isOpen, onOpen, onClose } = useDisclosure()
   const openModal = (index: number) => {
     const selectedTodo = todos[index]
@@ -67,10 +68,10 @@ const TaskList = () => {
       <Table variant="simple" size="sm">
         <Thead>
           <Tr>
-            <Th width="20%">ID</Th>
-            <Th width="20%">名前</Th>
-            <Th width="20%">状況</Th>
-            <Th width="20%">締切</Th>
+            <Th width="5%">ID</Th>
+            <Th width="25%">名前</Th>
+            <Th width="25%">状況</Th>
+            <Th width="25%">締切</Th>
             <Th width="10%"></Th>
             <Th width="10%"></Th>
           </Tr>
