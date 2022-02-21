@@ -29,14 +29,38 @@ import { useTaskList } from '../../../hooks/components/pages/dashboard/TaskList'
 
 const TaskList = () => {
   const { userId, userName } = useContext(UserContext)
+
   const { todos } = useContext(TodoContext)
-  const { todo, setTodo, selectTodos, deleteTodo, isAfterDeadline } =
-    useTaskList()
+
+  const {
+    todo,
+    setTodo,
+    selectTodos,
+    deleteTodo,
+    isAfterDeadline,
+    todoForEdit,
+    setTodoForEdit,
+  } = useTaskList()
+
   const { isOpen, onOpen, onClose } = useDisclosure()
+  const {
+    isOpen: isOpenSecond,
+    onOpen: onOpenSecond,
+    onClose: onCloseSecond,
+  } = useDisclosure()
+
   const openModal = (index: number) => {
     const selectedTodo = todos[index]
     setTodo(selectedTodo)
     onOpen()
+  }
+
+  const openModalSecond = (index: number) => {
+    // modal用のstateを準備する。それをModalには表示させる。
+    // openModalSecondを押したものにはdispatcherで選択されたtodoを代入する
+    // キャンセル押した場合は初期値に戻す処理を行う。
+    // 変更押した場合はapiコールしてmodalを閉じる
+    onOpenSecond()
   }
   return (
     <Box p={2} borderRadius="md" borderWidth="1px" shadow="lg">
@@ -93,6 +117,16 @@ const TaskList = () => {
                     </Button>
                   </Td>
                   <Td>
+                    <Button bg="teal.300" size="xs">
+                      <Text
+                        color="white"
+                        onClick={() => openModalSecond(index)}
+                      >
+                        編集
+                      </Text>
+                    </Button>
+                  </Td>
+                  <Td>
                     <Button bg="teal.50" size="xs">
                       <Text
                         color="teal.400"
@@ -107,6 +141,7 @@ const TaskList = () => {
             })}
         </Tbody>
       </Table>
+
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay>
           <ModalContent>
@@ -116,6 +151,21 @@ const TaskList = () => {
             <ModalCloseButton />
 
             <ModalBody bg="teal.50">{todo && todo.content}</ModalBody>
+          </ModalContent>
+        </ModalOverlay>
+      </Modal>
+
+      <Modal isOpen={isOpenSecond} onClose={onCloseSecond}>
+        <ModalOverlay>
+          <ModalContent>
+            <ModalHeader bg="teal.300">
+              <Text color="white">タスクを編集する</Text>
+            </ModalHeader>
+            <ModalCloseButton />
+
+            <ModalBody bg="teal.50">
+              {todoForEdit && todoForEdit.title}
+            </ModalBody>
           </ModalContent>
         </ModalOverlay>
       </Modal>

@@ -8,7 +8,10 @@ import { ALL } from '../../../../constants'
 
 export const useTaskList = () => {
   const [todo, setTodo] = useState<TodoType>()
+
   const { todos, setTodos } = useContext(TodoContext)
+
+  const [todoForEdit, setTodoForEdit] = useState<TodoType>()
 
   const { userId } = useContext(UserContext)
 
@@ -50,5 +53,7 @@ export const useTaskList = () => {
     selectTodos,
     deleteTodo,
     isAfterDeadline,
+    todoForEdit,
+    setTodoForEdit,
   }
 }
