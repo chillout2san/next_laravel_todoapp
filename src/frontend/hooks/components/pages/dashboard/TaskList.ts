@@ -34,10 +34,21 @@ export const useTaskList = () => {
     })
   }
 
+  const isAfterDeadline = (deadline: string) => {
+    const deadlineDate = new Date(deadline)
+    const presentDate = new Date()
+    const isAfterDeadline = deadlineDate.getTime() - presentDate.getTime() < 0
+    if (isAfterDeadline) {
+      return 'red'
+    }
+    return 'black'
+  }
+
   return {
     todo,
     setTodo,
     selectTodos,
     deleteTodo,
+    isAfterDeadline,
   }
 }

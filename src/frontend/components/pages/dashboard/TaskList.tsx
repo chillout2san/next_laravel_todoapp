@@ -30,7 +30,7 @@ import { useTaskList } from '../../../hooks/components/pages/dashboard/TaskList'
 const TaskList = () => {
   const { userId, userName } = useContext(UserContext)
   const { todos } = useContext(TodoContext)
-  const { todo, setTodo, selectTodos, deleteTodo } = useTaskList()
+  const { todo, setTodo, selectTodos, deleteTodo, isAfterDeadline } = useTaskList()
   const { isOpen, onOpen, onClose } = useDisclosure()
   const openModal = (index: number) => {
     const selectedTodo = todos[index]
@@ -83,7 +83,7 @@ const TaskList = () => {
                   <Td>{index + 1}</Td>
                   <Td>{title}</Td>
                   <Td>{status}</Td>
-                  <Td>{deadline}</Td>
+                  <Td color={isAfterDeadline(deadline)}>{deadline}</Td>
                   <Td>
                     <Button bg="teal.300" size="xs">
                       <Text color="white" onClick={() => openModal(index)}>
