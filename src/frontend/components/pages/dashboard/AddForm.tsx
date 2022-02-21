@@ -10,7 +10,6 @@ import {
 } from '@chakra-ui/react'
 import { WORK_ON_PROGRESS } from '../../../constants'
 import { useContext } from 'react'
-import { TodoContext } from '../../../providers/TodoProvider'
 import { UserContext } from '../../../providers/UserProvider'
 import {
   yearList,

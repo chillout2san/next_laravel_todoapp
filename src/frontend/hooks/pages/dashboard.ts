@@ -8,8 +8,9 @@ export const useDashBoard = () => {
   const fetchTodos = (user_id: string) => {
     const param = new URLSearchParams()
     param.append('user_id', user_id)
-    postMethod('fetch_todos', param).then((response) => {
+    return postMethod('fetch_todos', param).then((response) => {
       setTodos(response.data)
+      return response.data
     })
   }
   return { fetchTodos }

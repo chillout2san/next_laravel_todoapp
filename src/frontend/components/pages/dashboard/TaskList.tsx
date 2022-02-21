@@ -30,7 +30,7 @@ import { useTaskList } from '../../../hooks/components/pages/dashboard/TaskList'
 const TaskList = () => {
   const { userId, userName } = useContext(UserContext)
   const { todos } = useContext(TodoContext)
-  const { todo, setTodo, deleteTodo } = useTaskList()
+  const { todo, setTodo, selectTodos, deleteTodo } = useTaskList()
   const { isOpen, onOpen, onClose } = useDisclosure()
   const openModal = (index: number) => {
     const selectedTodo = todos[index]
@@ -48,10 +48,18 @@ const TaskList = () => {
       <FormControl>
         <RadioGroup defaultValue={ALL}>
           <HStack spacing={4}>
-            <Radio value={ALL}>{ALL}</Radio>
-            <Radio value={DONE}>{DONE}</Radio>
-            <Radio value={WORK_ON_PROGRESS}>{WORK_ON_PROGRESS}</Radio>
-            <Radio value={REQUESTED}>{REQUESTED}</Radio>
+            <Radio value={ALL} onChange={selectTodos}>
+              {ALL}
+            </Radio>
+            <Radio value={DONE} onChange={selectTodos}>
+              {DONE}
+            </Radio>
+            <Radio value={WORK_ON_PROGRESS} onChange={selectTodos}>
+              {WORK_ON_PROGRESS}
+            </Radio>
+            <Radio value={REQUESTED} onChange={selectTodos}>
+              {REQUESTED}
+            </Radio>
           </HStack>
         </RadioGroup>
       </FormControl>
