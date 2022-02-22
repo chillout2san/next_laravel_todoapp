@@ -4,7 +4,7 @@ import { TodoType } from '../../../../types'
 import { useDashBoard } from '../../../pages/dashboard'
 import { TodoContext } from '../../../../providers/TodoProvider'
 import { UserContext } from '../../../../providers/UserProvider'
-import { ALL } from '../../../../constants'
+import { ALL, RED, BLACK } from '../../../../constants'
 
 export const useTaskList = () => {
   const [todo, setTodo] = useState<TodoType>()
@@ -40,9 +40,9 @@ export const useTaskList = () => {
     const presentDate = new Date()
     const isAfterDeadline = deadlineDate.getTime() - presentDate.getTime() < 0
     if (isAfterDeadline) {
-      return 'red'
+      return RED
     }
-    return 'black'
+    return BLACK
   }
 
   const [id, setId] = useState('')

@@ -6,3 +6,7 @@ export const REQUESTED = '依頼中'
 
 // axiosからrequestを投げるバックエンドのURL
 export const URL = 'http://localhost/public/'
+
+// alertの色
+export const RED = 'red'
+export const BLACK = 'black'
