@@ -14,5 +14,6 @@
 Route::post('fetch_todos', 'TodoController@fetchTodos');
 Route::post('push_todo', 'TodoController@pushTodo');
 Route::post('delete_todo', 'TodoController@deleteTodo');
+Route::post('edit_todo', 'TodoController@editTodo');
 Route::post('sign_up', 'UserController@signUp');
 Route::post('sign_in', 'UserController@signIn');

@@ -20,7 +20,7 @@ import { useAddForm } from '../../../hooks/components/pages/dashboard/AddFrom'
 import { postMethod } from '../../../libs/axios/axios'
 
 interface PropType {
-  fetchTodos: (user_id: string) => void
+  fetchTodos: (user_id: string) => Promise<any>
 }
 
 const AddForm = (props: PropType) => {

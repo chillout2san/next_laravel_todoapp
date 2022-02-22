@@ -35,8 +35,15 @@ import {
   dateList,
   separateFromDate,
 } from '../../../services/date'
+import { postMethod } from '../../../libs/axios/axios'
 
-const TaskList = () => {
+interface PropType {
+  fetchTodos: (user_id: string) => Promise<any>
+}
+
+const TaskList = (props: PropType) => {
+  const { fetchTodos } = props
+
   const { userId, userName } = useContext(UserContext)
 
   const { todos } = useContext(TodoContext)
@@ -101,14 +108,16 @@ const TaskList = () => {
     onOpenSecond()
   }
 
-  const editTodo = () => {
-    console.log({
-      id,
-      title,
-      content,
-      status,
-      deadline: `${year}-${month}-${date}`,
-    })
+  const editTodo = async () => {
+    const param = new URLSearchParams()
+    param.append('id', id)
+    param.append('title', title)
+    param.append('content', content)
+    param.append('status', status)
+    param.append('deadline', `${year}-${month}-${date}`)
+    await postMethod('edit_todo', param)
+    await fetchTodos(userId)
+    onCloseSecond()
   }
   return (
     <Box p={2} borderRadius="md" borderWidth="1px" shadow="lg">

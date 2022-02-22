@@ -31,4 +31,15 @@ class TodoController extends Controller
       $todo = Todo::find($id);
       $todo->delete();
     }
+
+    public function editTodo(Request $request) {
+      header('Access-Control-Allow-Origin: *');
+      $id = (int) $request->input('id');
+      $todo = Todo::find($id);
+      $todo->title = $request->input('title');
+      $todo->content = $request->input('content');
+      $todo->status = $request->input('status');
+      $todo->deadline = $request->input('deadline');
+      $todo->save();
+    }
 }

@@ -33,7 +33,7 @@ const Home: NextPage = () => {
           height={{ base: '100%', lg: '400px' }}
           overflow="scroll"
         >
-          <TaskList />
+          <TaskList fetchTodos={fetchTodos} />
         </Box>
       </Box>
     </>
