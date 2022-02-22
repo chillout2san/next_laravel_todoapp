@@ -90,10 +90,6 @@ const TaskList = (props: PropType) => {
   }
 
   const openModalSecond = (index: number) => {
-    // modal用のstateを準備する。それをModalには表示させる。
-    // openModalSecondを押したものにはdispatcherで選択されたtodoを代入する
-    // キャンセル押した場合は初期値に戻す処理を行う。
-    // 変更押した場合はapiコールしてmodalを閉じる
     const selectedTodo = todos[index]
     setId(selectedTodo.id)
     setTitle(selectedTodo.title)
