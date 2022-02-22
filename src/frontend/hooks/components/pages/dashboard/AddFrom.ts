@@ -3,7 +3,7 @@ import {
   presentYear,
   presentMonth,
   presentDate,
-} from '../../../../services/components/pages/dashboard/AddForm'
+} from '../../../../services/date'
 
 export const useAddForm = () => {
   const [title, setTitle] = useState('')
@@ -49,10 +49,8 @@ export const useAddForm = () => {
     handleMonth,
     date,
     handleDate,
-    clearForm
+    clearForm,
   }
 }
 
-export const useAddFormCRUD = () => {
-    
-}
+export const useAddFormCRUD = () => {}

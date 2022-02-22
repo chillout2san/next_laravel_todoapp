@@ -18,3 +18,11 @@ const dateListForPrepare = [...Array(31)]
 export const dateList = dateListForPrepare.map((_date, index) =>
   (index + 1).toString()
 )
+
+export const separateFromDate = (date: string) => {
+  const target = new Date(date)
+  const targetYear = target.getFullYear().toString()
+  const targetMonth = (target.getMonth() + 1).toString()
+  const targetDate = target.getDate().toString()
+  return { targetYear, targetMonth, targetDate }
+}

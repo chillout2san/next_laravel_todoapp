@@ -11,8 +11,6 @@ export const useTaskList = () => {
 
   const { todos, setTodos } = useContext(TodoContext)
 
-  const [todoForEdit, setTodoForEdit] = useState<TodoType>()
-
   const { userId } = useContext(UserContext)
 
   const { fetchTodos } = useDashBoard()
@@ -47,13 +45,61 @@ export const useTaskList = () => {
     return 'black'
   }
 
+  const [id, setId] = useState('')
+
+  const [title, setTitle] = useState('')
+  const handleTitle: React.ChangeEventHandler<HTMLInputElement> = (event) =>
+    setTitle(event.target.value)
+
+  const [content, setContent] = useState('')
+  const handleContent: React.ChangeEventHandler<HTMLTextAreaElement> = (
+    event
+  ) => setContent(event.target.value)
+
+  const [status, setStatus] = useState('')
+  const handleStatus: React.ChangeEventHandler<HTMLSelectElement> = (event) =>
+    setStatus(event.target.value)
+
+  const [year, setYear] = useState('')
+  const handleYear: React.ChangeEventHandler<HTMLSelectElement> = (event) => {
+    setYear(event.target.value)
+  }
+
+  const [month, setMonth] = useState('')
+  const handleMonth: React.ChangeEventHandler<HTMLSelectElement> = (event) => {
+    setMonth(event.target.value)
+  }
+
+  const [date, setDate] = useState('')
+  const handleDate: React.ChangeEventHandler<HTMLSelectElement> = (event) => {
+    setDate(event.target.value)
+  }
+
   return {
     todo,
     setTodo,
     selectTodos,
     deleteTodo,
     isAfterDeadline,
-    todoForEdit,
-    setTodoForEdit,
+    id,
+    setId,
+    title,
+    setTitle,
+    handleTitle,
+    content,
+    setContent,
+    handleContent,
+    status,
+    setStatus,
+    handleStatus,
+    year,
+    setYear,
+    handleYear,
+    month,
+    setMonth,
+    handleMonth,
+    date,
+    setDate,
+    handleDate,
   }
 }
