@@ -6,6 +6,7 @@ import TaskList from '../components/pages/dashboard/TaskList'
 import { useContext } from 'react'
 import { useDashBoard } from '../hooks/pages/dashboard'
 import { UserContext } from '../providers/UserProvider'
+import router from 'next/router'
 
 const Home: NextPage = () => {
   const { userId } = useContext(UserContext)
@@ -13,7 +14,9 @@ const Home: NextPage = () => {
   const { fetchTodos } = useDashBoard()
 
   useEffect(() => {
-    // MARKING: ナビゲーションガードを実装すること
+    if (!userId) {
+      router.push('/')
+    }
     fetchTodos(userId)
   }, [])
 
