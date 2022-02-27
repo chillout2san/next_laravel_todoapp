@@ -5,7 +5,7 @@ export const WORK_ON_PROGRESS = '作業中'
 export const REQUESTED = '依頼中'
 
 // axiosからrequestを投げるバックエンドのURL
-export const URL = process.env.DOMAIN
+export const URL = 'http://localhost/public/'
 
 // alertの色
 export const RED = 'red'
