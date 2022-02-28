@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { URL } from '../../constants'
+import { URL } from '../constants'
 
 const client = axios.create({
   baseURL: URL,
@@ -23,4 +23,10 @@ export const getMethod = (methodName: string) => {
 
 export const postMethod = (methodName: string, params: URLSearchParams) => {
   return client.post(methodName, params)
+}
+
+export default {
+  createURLSearchParams,
+  getMethod,
+  postMethod,
 }

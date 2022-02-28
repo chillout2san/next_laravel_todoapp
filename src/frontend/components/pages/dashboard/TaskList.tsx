@@ -35,7 +35,7 @@ import {
   dateList,
   separateFromDate,
 } from '../../../services/date'
-import { postMethod } from '../../../libs/axios/axios'
+import { postMethod } from '../../../libs/axios'
 
 interface PropType {
   fetchTodos: (user_id: string) => Promise<any>

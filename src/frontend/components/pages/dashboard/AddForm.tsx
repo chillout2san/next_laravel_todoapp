@@ -11,13 +11,9 @@ import {
 import { WORK_ON_PROGRESS } from '../../../constants'
 import { useContext } from 'react'
 import { UserContext } from '../../../providers/UserProvider'
-import {
-  yearList,
-  monthList,
-  dateList,
-} from '../../../services/date'
+import { yearList, monthList, dateList } from '../../../services/date'
 import { useAddForm } from '../../../hooks/components/pages/dashboard/AddFrom'
-import { postMethod } from '../../../libs/axios/axios'
+import { postMethod } from '../../../libs/axios'
 
 interface PropType {
   fetchTodos: (user_id: string) => Promise<any>

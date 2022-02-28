@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react'
-import { postMethod } from '../../../../libs/axios/axios'
+import { postMethod } from '../../../../libs/axios'
 import { TodoType } from '../../../../types'
 import { useDashBoard } from '../../../pages/dashboard'
 import { TodoContext } from '../../../../providers/TodoProvider'

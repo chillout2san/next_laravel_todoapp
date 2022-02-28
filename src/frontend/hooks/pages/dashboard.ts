@@ -1,4 +1,4 @@
-import { postMethod } from '../../libs/axios/axios'
+import { postMethod } from '../../libs/axios'
 import { useContext } from 'react'
 import { TodoContext } from '../../providers/TodoProvider'
 

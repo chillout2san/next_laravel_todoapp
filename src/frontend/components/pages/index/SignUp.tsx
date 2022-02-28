@@ -1,10 +1,10 @@
 import { Box, Text, Input, Button, HStack, Divider } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { useSignUp } from '../../../hooks/components/pages/index/signUp'
-import { createURLSearchParams, postMethod } from '../../../libs/axios/axios'
+import { createURLSearchParams, postMethod } from '@/libs/axios'
 import { signUpRequest, signUpResponse } from '../../../types/api/signUp'
 import { AxiosResponse } from 'axios'
-import { UserContext } from '../../../providers/UserProvider'
+import { UserContext } from '@/providers/UserProvider'
 import { useContext } from 'react'
 
 const SignUp = () => {
