@@ -1,11 +1,10 @@
 import { Box, Text, Input, Button, HStack, Divider } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
-import { useSignUp } from '../../../hooks/components/pages/index/signUp'
-import { createURLSearchParams, postMethod } from '@/libs/axios'
-import { signUpRequest, signUpResponse } from '../../../types/api/signUp'
-import { AxiosResponse } from 'axios'
-import { UserContext } from '@/providers/UserProvider'
 import { useContext } from 'react'
+import { useSignUp } from '@/hooks/components/pages/index/signUp'
+import { createURLSearchParams, postMethod } from '@/libs/axios'
+import { UserContext } from '@/providers/UserProvider'
+import { signUpRequest, signUpResponse } from '@/types/api/signUp'
 
 const SignUp = () => {
   const router = useRouter()
@@ -34,18 +33,16 @@ const SignUp = () => {
       ['mail', mail],
       ['pass', pass],
     ])
-    postMethod('sign_up', params).then(
-      ({ data }: AxiosResponse<signUpResponse>) => {
-        if (data.user_id === null) {
-          setErrorMessage('会員登録に失敗しました。')
-          return
-        }
-        clearForm()
-        setUserId(data.user_id)
-        setUserName(name)
-        router.push('/dashboard')
+    postMethod<signUpResponse>('sign_up', params).then(({ data }) => {
+      if (data.user_id === null) {
+        setErrorMessage('会員登録に失敗しました。')
+        return
       }
-    )
+      clearForm()
+      setUserId(data.user_id)
+      setUserName(name)
+      router.push('/dashboard')
+    })
   }
 
   return (

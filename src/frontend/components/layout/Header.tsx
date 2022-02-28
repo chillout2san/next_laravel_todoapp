@@ -1,5 +1,5 @@
+import { useDisclosure } from '@chakra-ui/hooks'
 import {
-  Box,
   Text,
   Button,
   VStack,
@@ -11,8 +11,7 @@ import {
   ModalCloseButton,
   ModalBody,
 } from '@chakra-ui/react'
-import { useDisclosure } from '@chakra-ui/hooks'
-import HeaderModalBox from './parts/ModalBox'
+import HeaderModalBox from '@/components/layout/parts/ModalBox'
 
 const Header = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()

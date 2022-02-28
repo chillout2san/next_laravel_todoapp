@@ -1,12 +1,11 @@
-import type { NextPage } from 'next'
-import { useEffect } from 'react'
 import { Box } from '@chakra-ui/react'
-import AddForm from '../components/pages/dashboard/AddForm'
-import TaskList from '../components/pages/dashboard/TaskList'
-import { useContext } from 'react'
-import { useDashBoard } from '../hooks/pages/dashboard'
-import { UserContext } from '../providers/UserProvider'
+import type { NextPage } from 'next'
 import router from 'next/router'
+import { useEffect, useContext } from 'react'
+import AddForm from '@/components/pages/dashboard/AddForm'
+import TaskList from '@/components/pages/dashboard/TaskList'
+import { useDashBoard } from '@/hooks/pages/dashboard'
+import { UserContext } from '@/providers/UserProvider'
 
 const Home: NextPage = () => {
   const { userId } = useContext(UserContext)
@@ -18,7 +17,7 @@ const Home: NextPage = () => {
       router.push('/')
     }
     fetchTodos(userId)
-  }, [])
+  }, [fetchTodos, userId])
 
   return (
     <>

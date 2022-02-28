@@ -5,7 +5,7 @@ import {
   Dispatch,
   SetStateAction,
 } from 'react'
-import { TodoType } from '../types'
+import { TodoType } from '@/types'
 
 interface PropType {
   children: ReactNode

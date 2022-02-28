@@ -4,18 +4,15 @@ export const presentYear = today.getFullYear()
 export const presentMonth = today.getMonth() + 1
 export const presentDate = today.getDate()
 
-const yearListForPrepare = [...Array(5)]
-export const yearList = yearListForPrepare.map((_year, index) =>
+export const yearList = [...Array(5)].map((_year, index) =>
   (presentYear + index).toString()
 )
 
-const monthListForPrepare = [...Array(12)]
-export const monthList = monthListForPrepare.map((_month, index) =>
+export const monthList = [...Array(12)].map((_month, index) =>
   (index + 1).toString()
 )
 
-const dateListForPrepare = [...Array(31)]
-export const dateList = dateListForPrepare.map((_date, index) =>
+export const dateList = [...Array(31)].map((_date, index) =>
   (index + 1).toString()
 )
 
