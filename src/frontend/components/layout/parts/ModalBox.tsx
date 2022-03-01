@@ -8,8 +8,13 @@ interface Props {
   fourthText?: string
 }
 
-const HeaderModalBox = (props: Props) => {
-  const { heading, firstText, secondText, thirdText, fourthText } = props
+const HeaderModalBox = ({
+  heading,
+  firstText,
+  secondText,
+  thirdText,
+  fourthText,
+}: Props) => {
   return (
     <Box
       mb={2}
