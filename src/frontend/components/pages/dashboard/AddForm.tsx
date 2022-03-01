@@ -10,7 +10,7 @@ import {
 } from '@chakra-ui/react'
 import { useContext } from 'react'
 import { WORK_ON_PROGRESS } from '@/constants'
-import { useAddForm } from '@/hooks/components/pages/dashboard/AddFrom'
+import { useAddForm } from '@/hooks/components/pages/dashboard/AddForm'
 import { postMethod } from '@/libs/axios'
 import { UserContext } from '@/providers/UserProvider'
 import { yearList, monthList, dateList } from '@/services/date'

@@ -54,27 +54,17 @@ const TaskList = (props: PropType) => {
     selectTodos,
     deleteTodo,
     isAfterDeadline,
-    id,
-    setId,
-    title,
-    setTitle,
+    task,
+    setTask,
     handleTitle,
-    content,
-    setContent,
     handleContent,
-    status,
-    setStatus,
     handleStatus,
-    year,
-    setYear,
     handleYear,
-    month,
-    setMonth,
     handleMonth,
-    date,
-    setDate,
     handleDate,
   } = useTaskList()
+
+  const { id, title, content, status, year, month, date } = task
 
   const { isOpen, onOpen, onClose } = useDisclosure()
   const {
@@ -91,14 +81,16 @@ const TaskList = (props: PropType) => {
 
   const openModalSecond = (index: number) => {
     const { id, title, content, status, deadline } = todos[index]
-    setId(id)
-    setTitle(title)
-    setContent(content)
-    setStatus(status)
     const { targetYear, targetMonth, targetDate } = separateFromDate(deadline)
-    setYear(targetYear)
-    setMonth(targetMonth)
-    setDate(targetDate)
+    setTask({
+      id,
+      title,
+      content,
+      status,
+      year: targetYear,
+      month: targetMonth,
+      date: targetDate,
+    })
     onOpenSecond()
   }
 

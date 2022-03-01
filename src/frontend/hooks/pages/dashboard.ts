@@ -4,7 +4,7 @@ import { TodoContext } from '@/providers/TodoProvider'
 import { TodoType } from '@/types'
 
 export const useDashBoard = () => {
-  const { todos, setTodos } = useContext(TodoContext)
+  const { setTodos } = useContext(TodoContext)
 
   const fetchTodos = (user_id: string) => {
     const param = new URLSearchParams()

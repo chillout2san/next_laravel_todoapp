@@ -9,7 +9,7 @@ import { TodoType } from '@/types'
 export const useTaskList = () => {
   const [todo, setTodo] = useState<TodoType>()
 
-  const { todos, setTodos } = useContext(TodoContext)
+  const { setTodos } = useContext(TodoContext)
 
   const { userId } = useContext(UserContext)
 
@@ -45,34 +45,69 @@ export const useTaskList = () => {
     return BLACK
   }
 
-  const [id, setId] = useState('')
+  const [task, setTask] = useState({
+    id: '',
+    title: '',
+    content: '',
+    status: '',
+    year: '',
+    month: '',
+    date: '',
+  })
+  const handleTitle: React.ChangeEventHandler<HTMLInputElement> = (event) => {
+    setTask((task) => {
+      return {
+        ...task,
+        title: event.target.value,
+      }
+    })
+  }
 
-  const [title, setTitle] = useState('')
-  const handleTitle: React.ChangeEventHandler<HTMLInputElement> = (event) =>
-    setTitle(event.target.value)
-
-  const [content, setContent] = useState('')
   const handleContent: React.ChangeEventHandler<HTMLTextAreaElement> = (
     event
-  ) => setContent(event.target.value)
+  ) => {
+    setTask((task) => {
+      return {
+        ...task,
+        content: event.target.value,
+      }
+    })
+  }
 
-  const [status, setStatus] = useState('')
-  const handleStatus: React.ChangeEventHandler<HTMLSelectElement> = (event) =>
-    setStatus(event.target.value)
+  const handleStatus: React.ChangeEventHandler<HTMLSelectElement> = (event) => {
+    setTask((task) => {
+      return {
+        ...task,
+        status: event.target.value,
+      }
+    })
+  }
 
-  const [year, setYear] = useState('')
   const handleYear: React.ChangeEventHandler<HTMLSelectElement> = (event) => {
-    setYear(event.target.value)
+    setTask((task) => {
+      return {
+        ...task,
+        year: event.target.value,
+      }
+    })
   }
 
-  const [month, setMonth] = useState('')
   const handleMonth: React.ChangeEventHandler<HTMLSelectElement> = (event) => {
-    setMonth(event.target.value)
+    setTask((task) => {
+      return {
+        ...task,
+        month: event.target.value,
+      }
+    })
   }
 
-  const [date, setDate] = useState('')
   const handleDate: React.ChangeEventHandler<HTMLSelectElement> = (event) => {
-    setDate(event.target.value)
+    setTask((task) => {
+      return {
+        ...task,
+        date: event.target.value,
+      }
+    })
   }
 
   return {
@@ -81,25 +116,13 @@ export const useTaskList = () => {
     selectTodos,
     deleteTodo,
     isAfterDeadline,
-    id,
-    setId,
-    title,
-    setTitle,
+    task,
+    setTask,
     handleTitle,
-    content,
-    setContent,
     handleContent,
-    status,
-    setStatus,
     handleStatus,
-    year,
-    setYear,
     handleYear,
-    month,
-    setMonth,
     handleMonth,
-    date,
-    setDate,
     handleDate,
   }
 }
