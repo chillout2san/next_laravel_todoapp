@@ -1,7 +1,7 @@
-import type { NextPage } from 'next'
-import SignUp from '../components/pages/index/SignUp'
-import SignIn from '../components/pages/index/SignIn'
 import { HStack, Box } from '@chakra-ui/react'
+import type { NextPage } from 'next'
+import SignIn from '@/components/pages/index/SignIn'
+import SignUp from '@/components/pages/index/SignUp'
 
 const Home: NextPage = () => {
   return (

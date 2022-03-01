@@ -1,3 +1,4 @@
+import { useDisclosure } from '@chakra-ui/hooks'
 import {
   Text,
   Box,
@@ -23,19 +24,18 @@ import {
   Select,
   Textarea,
 } from '@chakra-ui/react'
-import { useDisclosure } from '@chakra-ui/hooks'
-import { ALL, DONE, REQUESTED, WORK_ON_PROGRESS } from '../../../constants'
 import { useContext } from 'react'
-import { TodoContext } from '../../../providers/TodoProvider'
-import { UserContext } from '../../../providers/UserProvider'
-import { useTaskList } from '../../../hooks/components/pages/dashboard/TaskList'
+import { ALL, DONE, REQUESTED, WORK_ON_PROGRESS } from '@/constants'
+import { useTaskList } from '@/hooks/components/pages/dashboard/TaskList'
+import { postMethod } from '@/libs/axios'
+import { TodoContext } from '@/providers/TodoProvider'
+import { UserContext } from '@/providers/UserProvider'
 import {
   yearList,
   monthList,
   dateList,
   separateFromDate,
-} from '../../../services/date'
-import { postMethod } from '../../../libs/axios/axios'
+} from '@/services/date'
 
 interface PropType {
   fetchTodos: (user_id: string) => Promise<any>
@@ -90,14 +90,12 @@ const TaskList = (props: PropType) => {
   }
 
   const openModalSecond = (index: number) => {
-    const selectedTodo = todos[index]
-    setId(selectedTodo.id)
-    setTitle(selectedTodo.title)
-    setContent(selectedTodo.content)
-    setStatus(selectedTodo.status)
-    const { targetYear, targetMonth, targetDate } = separateFromDate(
-      selectedTodo.deadline
-    )
+    const { id, title, content, status, deadline } = todos[index]
+    setId(id)
+    setTitle(title)
+    setContent(content)
+    setStatus(status)
+    const { targetYear, targetMonth, targetDate } = separateFromDate(deadline)
     setYear(targetYear)
     setMonth(targetMonth)
     setDate(targetDate)

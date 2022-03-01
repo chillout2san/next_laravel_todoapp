@@ -1,9 +1,5 @@
 import { useState } from 'react'
-import {
-  presentYear,
-  presentMonth,
-  presentDate,
-} from '../../../../services/date'
+import { presentYear, presentMonth, presentDate } from '@/services/date'
 
 export const useAddForm = () => {
   const [title, setTitle] = useState('')

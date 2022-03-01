@@ -1,10 +1,10 @@
 import React, { useState, useContext } from 'react'
-import { postMethod } from '../../../../libs/axios/axios'
-import { TodoType } from '../../../../types'
-import { useDashBoard } from '../../../pages/dashboard'
-import { TodoContext } from '../../../../providers/TodoProvider'
-import { UserContext } from '../../../../providers/UserProvider'
-import { ALL, RED, BLACK } from '../../../../constants'
+import { ALL, RED, BLACK } from '@/constants'
+import { useDashBoard } from '@/hooks/pages/dashboard'
+import { postMethod } from '@/libs/axios'
+import { TodoContext } from '@/providers/TodoProvider'
+import { UserContext } from '@/providers/UserProvider'
+import { TodoType } from '@/types'
 
 export const useTaskList = () => {
   const [todo, setTodo] = useState<TodoType>()

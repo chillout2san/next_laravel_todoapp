@@ -8,24 +8,18 @@ import {
   Divider,
   Select,
 } from '@chakra-ui/react'
-import { WORK_ON_PROGRESS } from '../../../constants'
 import { useContext } from 'react'
-import { UserContext } from '../../../providers/UserProvider'
-import {
-  yearList,
-  monthList,
-  dateList,
-} from '../../../services/date'
-import { useAddForm } from '../../../hooks/components/pages/dashboard/AddFrom'
-import { postMethod } from '../../../libs/axios/axios'
+import { WORK_ON_PROGRESS } from '@/constants'
+import { useAddForm } from '@/hooks/components/pages/dashboard/AddFrom'
+import { postMethod } from '@/libs/axios'
+import { UserContext } from '@/providers/UserProvider'
+import { yearList, monthList, dateList } from '@/services/date'
 
 interface PropType {
   fetchTodos: (user_id: string) => Promise<any>
 }
 
-const AddForm = (props: PropType) => {
-  const { fetchTodos } = props
-
+const AddForm = ({ fetchTodos }: PropType) => {
   const { userId } = useContext(UserContext)
 
   const {
