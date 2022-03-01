@@ -2,48 +2,77 @@ import { useState } from 'react'
 import { presentYear, presentMonth, presentDate } from '@/services/date'
 
 export const useAddForm = () => {
-  const [title, setTitle] = useState('')
-  const handleTitle: React.ChangeEventHandler<HTMLInputElement> = (event) =>
-    setTitle(event.target.value)
+  const [form, setForm] = useState({
+    title: '',
+    content: '',
+    year: presentYear.toString(),
+    month: presentMonth.toString(),
+    date: presentDate.toString(),
+  })
 
-  const [content, setContent] = useState('')
+  const handleTitle: React.ChangeEventHandler<HTMLInputElement> = (event) => {
+    setForm((form) => {
+      return {
+        ...form,
+        title: event.target.value,
+      }
+    })
+  }
+
   const handleContent: React.ChangeEventHandler<HTMLTextAreaElement> = (
     event
-  ) => setContent(event.target.value)
+  ) => {
+    setForm((form) => {
+      return {
+        ...form,
+        content: event.target.value,
+      }
+    })
+  }
 
-  const [year, setYear] = useState(presentYear.toString())
   const handleYear: React.ChangeEventHandler<HTMLSelectElement> = (event) => {
-    setYear(event.target.value)
+    setForm((form) => {
+      return {
+        ...form,
+        year: event.target.value,
+      }
+    })
   }
 
-  const [month, setMonth] = useState(presentMonth.toString())
   const handleMonth: React.ChangeEventHandler<HTMLSelectElement> = (event) => {
-    setMonth(event.target.value)
+    setForm((form) => {
+      return {
+        ...form,
+        month: event.target.value,
+      }
+    })
   }
 
-  const [date, setDate] = useState(presentDate.toString())
   const handleDate: React.ChangeEventHandler<HTMLSelectElement> = (event) => {
-    setDate(event.target.value)
+    setForm((form) => {
+      return {
+        ...form,
+        date: event.target.value,
+      }
+    })
   }
 
   const clearForm = () => {
-    setTitle('')
-    setContent('')
-    setYear(presentYear.toString())
-    setMonth(presentMonth.toString())
-    setDate(presentDate.toString())
+    setForm({
+      title: '',
+      content: '',
+      year: presentYear.toString(),
+      month: presentMonth.toString(),
+      date: presentDate.toString(),
+    })
   }
 
   return {
-    title,
+    form,
     handleTitle,
-    content,
     handleContent,
-    year,
     handleYear,
-    month,
     handleMonth,
-    date,
     handleDate,
     clearForm,
   }

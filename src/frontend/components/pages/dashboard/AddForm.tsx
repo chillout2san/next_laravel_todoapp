@@ -23,18 +23,16 @@ const AddForm = ({ fetchTodos }: PropType) => {
   const { userId } = useContext(UserContext)
 
   const {
-    title,
+    form,
     handleTitle,
-    content,
     handleContent,
-    year,
     handleYear,
-    month,
     handleMonth,
-    date,
     handleDate,
     clearForm,
   } = useAddForm()
+
+  const { title, content, year, month, date } = form
 
   const pushTodo = () => {
     const todo = {
